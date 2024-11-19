@@ -1,0 +1,44 @@
+
+.circle-image {
+    display: flex;                       /* Use flexbox to center content */
+    flex-direction: column;              /* Stack items vertically */
+    align-items: center;                 /* Center items horizontally */
+  }
+  
+  .circle-image img {
+    width: 100px;                        /* Set width */
+    height: 100px;                       /* Set height */
+    border-radius: 50%;                  /* Make the image circular */
+    object-fit: cover;                   /* Ensure the image covers the area */
+  }
+  
+  .circle-image p {
+    text-align: center;                  /* Center text below the image */
+    margin-top: 10px;                   /* Add some space between image and text */
+  }
+
+  
+  .nyc-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align the elements */
+  }
+  
+  .flex-container {
+    display: flex; /* Use flexbox for horizontal alignment */
+    justify-content: space-between; /* Space items evenly */
+    gap: 20px; /* Space between items */
+    margin-top: 20px; /* Add space above the flex container */
+  }
+  
+  .flex-container div {
+    text-align: center; /* Center the text below each image */
+  }
+  
+  .flex-container img {
+    width: 100px; /* Set a fixed width for images */
+    height: 100px; /* Set a fixed height for images */
+    border-radius: 50%; /* Make images circular */
+    object-fit: cover; /* Ensure images cover the circular area */
+  }
+  

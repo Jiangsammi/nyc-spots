@@ -1,16 +1,8 @@
 <!DOCTYPE html>
-
-
-<div class="button-container">
-  <a href="nycspots-1.html" class="home-button">Home</a>
-</div>
-
-
-
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>NYC SPOTS</title>
+  <title>NYC SPOTS - Budget</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/normalize.css">
@@ -25,9 +17,13 @@
   </style>
 </head>
 <body>
+  <div class="button-container">
+    <a href="index.html" class="home-button">Home</a>
+  </div>
+
   <main>
     <section class="center">
-      <h1 class="cute-font-regular">NYC Spots</h1>
+      <h1 class="cute-font-regular">NYC Spots - Budget Page</h1>
       <h2 class="indie-flower-regular">Made By Sammi Jiang</h2>
 
       <div class="center">
@@ -50,10 +46,37 @@
   </main>
 
   <script>
+    // Load saved budget, tip percentage, and total spent from local storage
+    window.onload = function() {
+      const savedBudget = localStorage.getItem('budget');
+      const savedTipPercentage = localStorage.getItem('tipPercentage');
+      const savedTotalSpent = localStorage.getItem('totalSpent');
+
+      if (savedBudget !== null) {
+        document.getElementById('budget').value = savedBudget;
+      }
+
+      if (savedTipPercentage !== null) {
+        document.getElementById('tipPercentage').value = savedTipPercentage;
+      }
+
+      if (savedTotalSpent !== null) {
+        document.getElementById('totalSpentResult').textContent = `Total amount spent (Budget + Tip) is $${savedTotalSpent}.`;
+      }
+    };
+
+    // Function to calculate total spent and save values to local storage
     function calculateTotalSpent() {
-      const budget = parseFloat(document.getElementById('budget').value);
-      const tipPercentage = parseFloat(document.getElementById('tipPercentage').value);
+      const budgetInput = document.getElementById('budget');
+      const tipPercentageInput = document.getElementById('tipPercentage');
       const totalSpentResultElement = document.getElementById('totalSpentResult');
+
+      const budget = parseFloat(budgetInput.value);
+      const tipPercentage = parseFloat(tipPercentageInput.value);
+
+      // Save the inputs to local storage
+      localStorage.setItem('budget', budgetInput.value);
+      localStorage.setItem('tipPercentage', tipPercentageInput.value);
 
       if (isNaN(budget) || isNaN(tipPercentage)) {
         totalSpentResultElement.textContent = 'Please enter valid numbers for both budget and tip percentage.';
@@ -64,10 +87,11 @@
       const totalSpent = budget + tipAmount;
 
       totalSpentResultElement.textContent = `Total amount spent (Budget + Tip) is $${totalSpent.toFixed(2)}.`;
+
+      // Save the total spent to local storage
+      localStorage.setItem('totalSpent', totalSpent.toFixed(2));
     }
   </script>
+  
 </body>
 </html>
-
-
-
